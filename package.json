@@ -34,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "React Course",
+  "main": "index.js",
+  "author": "Raviteja582",
+  "license": "MIT"
 }
