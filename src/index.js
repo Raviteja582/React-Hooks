@@ -1,38 +1,31 @@
-/* After Clearing the Boiler plater code except index.js */
+/* Demonstration of Child Props */
 
 import React from 'react';
-/* After Writing the Component, to Inject the code in component to index.html
-   we need to somehow inject to dom. for that we use ReactDom which renders the jsx code 
-   return from component into html dom.
-*/
 import ReactDom from 'react-dom';
 
-
-function Greeting() {
-	return <h4>Hell World, we</h4>
-}
-
-
-/* Creating same component using JSX functions directly */
-
-const Wishing = () => {
-	return React.createElement('h1', {}, "hello world");
-}
-
-/* Another Exxample for React JSX Underhood*/
-
-function Hello() {
+const Booklist = () => {
 	return (
 		<div>
-			<h1>Hello World</h1>
-		</div>
+			<Book title="hello World">
+				<p style={{marginLeft:'20px',color:'red'}}>This is special</p>
+			</Book>
+			<Book title="hi world" />
+			<Book title="Special world" />
+			<Book title="Wonderful world">
+				<p style={{marginLeft:'20px',color:'blue'}}>This is special</p>
+			</Book>
+			<Book title="Danger world" />
+		</div>		
 	);
 }
 
-const Hi = () => {
+const Book = (props) => {
 	return (
-		React.createElement('div', {}, React.createElement('h1', {}, 'Hi World'))
+		<div>
+			<legend>{props.title}</legend>
+			<p>{props.children}</p>
+		</div>
 	)
 }
 
-ReactDom.render(<Hi />, document.getElementById('root'));
+ReactDom.render(<Booklist />, document.getElementById('root'));
