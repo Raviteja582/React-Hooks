@@ -48,6 +48,9 @@ const Book = () => {
 
 /* Sending props as object */
 const Student = (props) => {
+	const outside = () => {
+		alert(`Hello ${props.name.FirstName}`);
+	};
 	return (
 		<table>
 			<tbody>
@@ -64,6 +67,8 @@ const Student = (props) => {
 					<td>{props.name.Branch}</td>
 				</tr>
 			</tbody>
+			{/* Event Handling using funtion outside of the declaration. */}
+			<button type="button" onClick={outside}>Sumbit</button>
 		</table>
 	)
 }
@@ -87,6 +92,9 @@ const Student2 = (props) => {
 					<td>{Branch}</td>
 				</tr>
 			</tbody>
+			<button type="button" onClick={() => {
+				prompt(`Welcome ${FirstName}`);
+			}}> Submit</button>
 		</table>
 	)
 }
