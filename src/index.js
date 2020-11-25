@@ -1,31 +1,77 @@
-/* Demonstration of Child Props */
+/* Demonstration of Map Method in List of Objects */
 
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const Booklist = () => {
+const name = [
+	{
+		'FirstName': 'RaviTeja',
+		'RollNumber': '17211A0582',
+		'Branch': 'CSE',
+	},
+	{
+		'FirstName': 'Gireesh',
+		'RollNumber': '17211A0581',
+		'Branch': 'ECE',
+	},
+	{
+		'FirstName': 'Nitessh',
+		'RollNumber': '17211A0568',
+		'Branch': 'EEE',
+	}
+]
+
+
+const Details = name.map((name) => {
 	return (
 		<div>
-			<Book title="hello World">
-				<p style={{marginLeft:'20px',color:'red'}}>This is special</p>
-			</Book>
-			<Book title="hi world" />
-			<Book title="Special world" />
-			<Book title="Wonderful world">
-				<p style={{marginLeft:'20px',color:'blue'}}>This is special</p>
-			</Book>
-			<Book title="Danger world" />
-		</div>		
+			<table style={{border:'2px solid black',margin:'30px'}}>
+				<tr>
+					<td>Name</td>
+					<td>{name.FirstName}</td>
+				</tr>
+				<tr>
+					<td>Roll Number</td>
+					<td>{name.RollNumber}</td>
+				</tr>
+				<tr>
+					<td>Branch</td>
+					<td>{name.Branch}</td>
+				</tr>
+			</table>
+		</div>
+	);
+})
+
+const Book = () => {
+	return (
+		<React.Fragment>
+			{/* Directly using in the render state */}
+			{name.map((name) => {
+				return (
+					<div>
+						<table style={{ border: '2px solid black', margin: '30px' }}>
+							<tr>
+								<td>Name</td>
+								<td>{name.FirstName}</td>
+							</tr>
+							<tr>
+								<td>Roll Number</td>
+								<td>{name.RollNumber}</td>
+							</tr>
+							<tr>
+								<td>Branch</td>
+								<td>{name.Branch}</td>
+							</tr>
+						</table>
+					</div>
+				);
+			})
+			}
+			{/* Storing in the variable and using in the component */}
+			{Details}
+		</React.Fragment>
 	);
 }
 
-const Book = (props) => {
-	return (
-		<div>
-			<legend>{props.title}</legend>
-			<p>{props.children}</p>
-		</div>
-	)
-}
-
-ReactDom.render(<Booklist />, document.getElementById('root'));
+ReactDom.render(<Book />, document.getElementById('root'));
