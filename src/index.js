@@ -3,75 +3,92 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const name = [
+const names = [
 	{
+		'id': 582,
 		'FirstName': 'RaviTeja',
 		'RollNumber': '17211A0582',
 		'Branch': 'CSE',
 	},
 	{
+		'id': 581,
 		'FirstName': 'Gireesh',
 		'RollNumber': '17211A0581',
 		'Branch': 'ECE',
 	},
 	{
+		'id': 568,
 		'FirstName': 'Nitessh',
 		'RollNumber': '17211A0568',
 		'Branch': 'EEE',
 	}
 ]
 
-
-const Details = name.map((name) => {
+const Book = () => {
 	return (
 		<div>
-			<table style={{border:'2px solid black',margin:'30px'}}>
+			{
+				names.map((name,index) => {
+					return (
+						<Student key={index} name={name} />
+					);
+				})
+			}
+			{/* Sending objects as spread operator */}
+			{
+				names.map((name,index) => {
+					return(
+						<Student2 key={index} {...name} />
+					);
+				})
+			}
+		</div>
+	);
+}
+
+/* Sending props as object */
+const Student = (props) => {
+	return (
+		<table>
+			<tbody>
 				<tr>
 					<td>Name</td>
-					<td>{name.FirstName}</td>
+					<td>{props.name.FirstName}</td> 
 				</tr>
 				<tr>
 					<td>Roll Number</td>
-					<td>{name.RollNumber}</td>
+					<td>{ props.name.RollNumber}</td>
 				</tr>
 				<tr>
 					<td>Branch</td>
-					<td>{name.Branch}</td>
+					<td>{props.name.Branch}</td>
 				</tr>
-			</table>
-		</div>
-	);
-})
-
-const Book = () => {
+			</tbody>
+		</table>
+	)
+}
+/* Sending object as props using spread operator */
+const Student2 = (props) => {
+	/* Destructing */
+	const { FirstName, RollNumber, Branch } = props
 	return (
-		<React.Fragment>
-			{/* Directly using in the render state */}
-			{name.map((name) => {
-				return (
-					<div>
-						<table style={{ border: '2px solid black', margin: '30px' }}>
-							<tr>
-								<td>Name</td>
-								<td>{name.FirstName}</td>
-							</tr>
-							<tr>
-								<td>Roll Number</td>
-								<td>{name.RollNumber}</td>
-							</tr>
-							<tr>
-								<td>Branch</td>
-								<td>{name.Branch}</td>
-							</tr>
-						</table>
-					</div>
-				);
-			})
-			}
-			{/* Storing in the variable and using in the component */}
-			{Details}
-		</React.Fragment>
-	);
+		<table>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td>{FirstName}</td>  {/* or props.name.FirstName*/ }
+				</tr>
+				<tr>
+					<td>Roll Number</td>
+					<td>{ RollNumber}</td>
+				</tr>
+				<tr>
+					<td>Branch</td>
+					<td>{Branch}</td>
+				</tr>
+			</tbody>
+		</table>
+	)
 }
 
 ReactDom.render(<Book />, document.getElementById('root'));
