@@ -1,10 +1,10 @@
 import React from 'react';
-import Example from './useEffect/useEffect_Example';
+import Short from './conditional-rendering/short_circuit';
 
 function App() {
     return (
         <React.Fragment>
-            <Example />
+            <Short />
         </React.Fragment>
     );
 }
