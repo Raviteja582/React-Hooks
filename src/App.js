@@ -1,12 +1,10 @@
 import React from 'react';
-import Use from './UseState_Problem';
-import UseS from './UseState_Solution';
+import Example from './useEffect/useEffect_Example';
 
 function App() {
     return (
         <React.Fragment>
-            <Use />
-            <UseS />
+            <Example />
         </React.Fragment>
     );
 }
