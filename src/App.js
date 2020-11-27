@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './PropTypes/mainComponent';
+import Main from './Router';
 
 function App() {
     return (
