@@ -1,10 +1,10 @@
 import React from 'react';
-import Prop from './useContext/useContext_Solution';
+import Main from './PropTypes/mainComponent';
 
 function App() {
     return (
         <React.Fragment>
-            <Prop />
+            <Main />
         </React.Fragment>
     );
 }
